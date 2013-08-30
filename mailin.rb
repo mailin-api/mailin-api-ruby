@@ -182,6 +182,3 @@ class Mailin
 	end
 end
 
-m = Mailin.new("http://api-dev.mailin.fr","h3fPpKwz","zwKpPf3h")
-m.get_campaigns()
-
