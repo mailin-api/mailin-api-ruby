@@ -1,7 +1,7 @@
 require 'json'
 require 'base64'
 require 'httparty'
-require 'hmac-sha1'
+require 'openssl'
 
 class Mailin
 	@base_url = ""
@@ -14,16 +14,15 @@ class Mailin
 	end
 	def do_request(resource,method,input)
                 called_url = @base_url + "/" + resource
-                c_date_time = Time.now.to_s
+                c_date_time = "Fri, 30 Aug 2013 20:11:52 +0530" #Time.now.to_s
                 md5_content = ""
                 if input!=""
                         md5_content = Digest::MD5.digest(input)
                 end
                 content_type = "application/json"
-                sign_string = method + "\n" + md5_content + "\n" + c_date_time + "\n" + called_url
-                hmac = HMAC::SHA1.new(@secret_key)
-                hmac.update(sign_string)
-                signature = Base64.encode64("#{hmac.digest}\n")
+                sign_string = method + "\n" + md5_content + "\n" + content_type + "\n" + c_date_time + "\n" + called_url
+		digest = OpenSSL::Digest::Digest.new('sha1')
+                signature = Base64.encode64(OpenSSL::HMAC.hexdigest(digest,@secret_key,sign_string.encode("UTF-8")))
                 puts signature
                 case method
                 when "GET"
