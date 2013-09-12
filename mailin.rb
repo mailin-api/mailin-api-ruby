@@ -4,15 +4,15 @@ require 'httparty'
 require 'openssl'
 
 class Mailin
-	@base_url = ""
-	@access_key = "Your access key"
-	@secret_key = "Your secret key"
-	def initialize(base_url,access_key,secret_key)
-		@base_url = base_url
-		@access_key = access_key
-		@secret_key = secret_key
-	end
-	def do_request(resource,method,input)
+        @base_url = ""
+        @access_key = "Your access key"
+        @secret_key = "Your secret key"
+        def initialize(base_url,access_key,secret_key)
+                @base_url = base_url
+                @access_key = access_key
+                @secret_key = secret_key
+        end
+        def do_request(resource,method,input)
                 called_url = @base_url + "/" + resource
                 c_date_time = "Fri, 30 Aug 2013 20:11:52 +0530" #Time.now.to_s
                 md5_content = ""
@@ -21,7 +21,7 @@ class Mailin
                 end
                 content_type = "application/json"
                 sign_string = method + "\n" + md5_content + "\n" + content_type + "\n" + c_date_time + "\n" + called_url
-		digest = OpenSSL::Digest::Digest.new('sha1')
+                digest = OpenSSL::Digest::Digest.new('sha1')
                 signature = Base64.encode64(OpenSSL::HMAC.hexdigest(digest,@secret_key,sign_string.encode("UTF-8")))
                 puts signature
                 case method
@@ -132,6 +132,9 @@ class Mailin
 	def get_user(id)
 		return self.get("user/" + id,"")
 	end
+	def get_user_stats(id,type)
+		return self.get("user/" + id + "/" + type,"")
+	end
 	def create_user(attributes,blacklisted,email,listid)
 		return self.post("user",{"attributes"=> attributes,"blacklisted"=> blacklisted,"email"=> email,"listid"=> listid}.to_json)
 	end
@@ -181,4 +184,5 @@ class Mailin
 		return self.post("bounces",{"start_date"=> start_date,"end_date"=> end_date,"email"=> email}.to_json)
 	end
 end
+
 
