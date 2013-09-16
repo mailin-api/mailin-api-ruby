@@ -34,7 +34,6 @@ It currently supports all the API calls for v1.0. Each call returns an Object th
 2. Assuming that you have cloned this git repo, or downloaded mailin.js . You can use this small sample script to get started
 ```ruby
 require 'mailin'
-
 m = Mailin.new("https://api.mailinblue.com/v1.0","<your access key>","<your secret key>")
 m.get_campaigns()
 ```
