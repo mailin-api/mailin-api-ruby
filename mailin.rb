@@ -14,7 +14,7 @@ class Mailin
         end
         def do_request(resource,method,input)
                 called_url = @base_url + "/" + resource
-                c_date_time = "Fri, 30 Aug 2013 20:11:52 +0530" #Time.now.to_s
+                c_date_time = "" #Time.now.to_s
                 md5_content = ""
                 if input!=""
                         md5_content = Digest::MD5.digest(input)
