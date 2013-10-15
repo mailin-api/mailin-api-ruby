@@ -17,7 +17,7 @@ class Mailin
                 c_date_time = "" #Time.now.to_s
                 md5_content = ""
                 if input!=""
-                        md5_content = Digest::MD5.digest(input)
+                        md5_content = Digest::MD5.hexdigest(input)
                 end
                 content_type = "application/json"
                 sign_string = method + "\n" + md5_content + "\n" + content_type + "\n" + c_date_time + "\n" + called_url
