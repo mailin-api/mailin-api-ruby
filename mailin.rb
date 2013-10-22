@@ -28,9 +28,9 @@ class Mailin
                 when "GET"
                         response = HTTParty.get(called_url,:headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 when "POST"
-                        response = HTTParty.post(called_url,:headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
+                        response = HTTParty.post(called_url,:body=>input, :headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 when "PUT"
-                        response = HTTParty.put(called_url,:headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
+                        response = HTTParty.put(called_url,:body=>input, :headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 else
                         response = HTTParty.delete(called_url,:headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 end
@@ -52,7 +52,7 @@ class Mailin
 		return self.get("account","")
 	end
 	def send_sms(text,tag,web_url,sms_from,sms_to)
-		return self.post("sms",{"text"=> text,"tag"=> tag,"web_url"=> web_url,"sms_from"=> sms_from,"sms_to"=> sms_to}.to_json)
+		return self.post("sms",{"text"=> text,"tag"=> tag,"web_url"=> web_url,"from"=> sms_from,"to"=> sms_to}.to_json)
 	end
 	def get_campaigns()
 		return self.get("campaign","")
