@@ -1,6 +1,6 @@
 require './mailin'
 
-m = Mailin.new("https://api.mailinblue.com/v1.0","<your access key>","<your secret key>")
+m = Mailin.new("https://api.sendinblue.com/v1.0","<your access key>","<your secret key>")
 
 # This will initiate the API with the endpoint and your access and secret key.
 
