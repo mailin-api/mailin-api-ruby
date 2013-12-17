@@ -31,9 +31,9 @@ It currently supports all the API calls for v1.0. Each call returns an Object th
 
 1. You will need to first get the Access key and Secret key from [Sendinblue](https://www.sendinblue.com).
 
-2. Assuming that you have cloned this git repo, or downloaded mailin.js . You can use this small sample script to get started
+2. Assuming that you have cloned this git repo. You can use this small sample script to get started
 ```ruby
-require 'mailin'
+require './mailin'
 m = Mailin.new("https://api.sendinblue.com/v1.0","<your access key>","<your secret key>")
 m.get_campaigns()
 ```
