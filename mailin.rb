@@ -108,8 +108,8 @@ class Mailin
 	def delete_users_list(id,users)
 		return self.delete("list/" + id + "/users",{"users"=> users}.to_json)
 	end
-	def send_email(to,subject,from,html,text,cc,bcc,replyto,attachment)
-		return self.post("email",{"cc"=> cc,"text"=> text,"bcc"=> bcc,"replyto"=> replyto,"html"=> html,"to"=> to,"attachment"=> attachment,"from"=> from,"subject"=> subject}.to_json)
+	def send_email(to,subject,from,html,text,cc,bcc,replyto,attachment,headers)
+		return self.post("email",{"cc"=> cc,"text"=> text,"bcc"=> bcc,"replyto"=> replyto,"html"=> html,"to"=> to,"attachment"=> attachment,"from"=> from,"subject"=> subject,"headers" => headers}.to_json)
 	end
 	def get_webhooks()
 		return self.get("webhook","")

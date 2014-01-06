@@ -85,4 +85,4 @@ m.get_campaigns()
  * [delete_webhook](https://apidocs.sendinblue.com/webhooks/#5)(id) - Deleting a webhook
  * [update_webhook](https://apidocs.sendinblue.com/webhooks/#4)(id,url,description,events) - Editing a webhook
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
- * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from,html,text,cc,bcc,replyto,attachment) - Sending out a transactional email
+ * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email

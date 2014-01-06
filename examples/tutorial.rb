@@ -13,5 +13,5 @@ cc = {'cc@example.net'=>'cc email'}
 bcc = {'bcc@example.net'=>'b cc email'}
 replyto = ['rpely@example.net','reply email']
 attachment=[]
-
-print m.send_email(to,subject,from,html,text,cc,bcc,replyto,attachment)
+headers=[]
+print m.send_email(to,subject,from,html,text,cc,bcc,replyto,attachment,headers)
