@@ -51,23 +51,23 @@ class Mailin
 	def get_account()
 		return self.get("account","")
 	end
-	def send_sms(text,tag,web_url,sms_from,sms_to)
-		return self.post("sms",{"text"=> text,"tag"=> tag,"web_url"=> web_url,"from"=> sms_from,"to"=> sms_to}.to_json)
+	def send_sms(to,from,text,web_url,tag)
+		return self.post("sms",{"text"=> text,"tag"=> tag,"web_url"=> web_url,"from"=> from,"to"=> to}.to_json)
 	end
-	def get_campaigns()
-		return self.get("campaign","")
+	def get_campaigns(type)
+		return self.get("campaign",{"type"=> type}.to_json)
 	end
 	def get_campaign(id)
 		return self.get("campaign/" + id,"")
 	end
-	def create_campaign(category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject)
-		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"tags"=> tags,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject}.to_json)
+	def create_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email)
+		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email}.to_json)
 	end
 	def delete_campaign(id)
 		return self.delete("campaign/" + id,"")
 	end
-	def update_campaign(id,category,from_name,name,bat_sent,tags,html_content,html_url,listid,scheduled_date,subject)
-		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"tags"=> tags,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject}.to_json)
+	def update_campaign(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,$from_email)
+		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email}.to_json)
 	end
 	def campaign_report_email(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body)
 		return self.post("campaign/" + id + "/report",{"lang"=> lang,"email_subject"=> email_subject,"email_to"=> email_to,"email_content_type"=> email_content_type,"email_bcc"=> email_bcc,"email_cc"=> email_cc,"email_body"=> email_body}.to_json)
@@ -80,12 +80,6 @@ class Mailin
 	end
 	def get_process(id)
 		return self.get("process/" + id,"")
-	end
-	def get_campaignstats()
-		return self.get("campaignstat","")
-	end
-	def get_campaignstat(id)
-		return self.get("campaignstat/" + id,"")
 	end
 	def get_lists()
 		return self.get("list","")
@@ -141,8 +135,8 @@ class Mailin
 	def delete_user(id)
 		return self.delete("user/" + id,"")
 	end
-	def update_user(id,attributes,blacklisted,listid)
-		return self.put("user/" + id,{"attributes"=> attributes,"blacklisted"=> blacklisted,"listid"=> listid}.to_json)
+	def update_user(id,attributes,blacklisted,listid,listid_unlink)
+		return self.put("user/" + id,{"attributes"=> attributes,"blacklisted"=> blacklisted,"listid"=> listid,"listid_unlink"=> listid_unlink}.to_json)
 	end
 	def import_users(url,listids,notify_url,name)
 		return self.post("user/import",{"url"=> url,"listids"=> listids,"notify_url"=> notify_url,"name"=> name}.to_json)
