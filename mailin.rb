@@ -60,14 +60,14 @@ class Mailin
 	def get_campaign(id)
 		return self.get("campaign/" + id,"")
 	end
-	def create_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email)
-		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email}.to_json)
+	def create_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to)
+		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to" => reply_to}.to_json)
 	end
 	def delete_campaign(id)
 		return self.delete("campaign/" + id,"")
 	end
-	def update_campaign(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,$from_email)
-		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email}.to_json)
+	def update_campaign(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to)
+		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to" => reply_to}.to_json)
 	end
 	def campaign_report_email(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body)
 		return self.post("campaign/" + id + "/report",{"lang"=> lang,"email_subject"=> email_subject,"email_to"=> email_to,"email_content_type"=> email_content_type,"email_bcc"=> email_bcc,"email_cc"=> email_cc,"email_body"=> email_body}.to_json)
