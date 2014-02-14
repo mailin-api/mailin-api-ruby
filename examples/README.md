@@ -26,6 +26,7 @@ tutorial.rb
  * [create_list](https://apidocs.sendinblue.com/list/#3)(list_name,list_parent) - Create a list
  * [delete_list](https://apidocs.sendinblue.com/list/#4)(id) - Delete a list
  * [update_list](https://apidocs.sendinblue.com/list/#5)(id,list_name,list_parent) - Updating a list
+ * [display_list_users](https://apidocs.sendinblue.com/list/#8)(listids,page,page_limit) - Display details of all users for the given lists
  * [add_users_list](https://apidocs.sendinblue.com/list/#6)(id,users) - Add users to a list
  * [delete_users_list](https://apidocs.sendinblue.com/list/#7)(id,users) - Delete users from a list
  * [get_attributes](https://apidocs.sendinblue.com/attribute/#1)() - Listing all attributes
@@ -51,3 +52,4 @@ tutorial.rb
  * [update_webhook](https://apidocs.sendinblue.com/webhooks/#4)(id,url,description,events) - Editing a webhook
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
  * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from,html,text,cc,bcc,replyto,attachment) - Sending out a transactional email
+ * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on mailin, through mailin smtp.
