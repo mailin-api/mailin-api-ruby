@@ -96,6 +96,9 @@ class Mailin
 	def update_list(id,list_name,list_parent)
 		return self.put("list/" + id,{"list_name"=> list_name,"list_parent"=> list_parent}.to_json)
 	end
+	def display_list_users(listids,page,page_limit)
+		return self.get("list/display",{"listids"=> listids,"page"=> page,"page_limit"=> page_limit}.to_json)
+    end
 	def add_users_list(id,users)
 		return self.post("list/" + id + "/users",{"users"=> users}.to_json)
 	end
@@ -176,6 +179,9 @@ class Mailin
 	end
 	def delete_bounces(start_date,end_date,email)
 		return self.post("bounces",{"start_date"=> start_date,"end_date"=> end_date,"email"=> email}.to_json)
+	end
+	def send_transactional_template(id,to,cc,bcc,attr)
+		return self.put("template/" + id,{"cc"=> cc,"to"=> to,"attr"=> attr,"bcc"=> bcc}.to_json)
 	end
 end
 
