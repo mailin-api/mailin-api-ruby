@@ -129,9 +129,6 @@ class Mailin
 	def get_user(id)
 		return self.get("user/" + id,"")
 	end
-	def get_user_stats(id,type)
-		return self.get("user/" + id + "/" + type,"")
-	end
 	def create_user(attributes,blacklisted,email,listid)
 		return self.post("user",{"attributes"=> attributes,"blacklisted"=> blacklisted,"email"=> email,"listid"=> listid}.to_json)
 	end
