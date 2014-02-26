@@ -96,9 +96,6 @@ class Mailin
 	def update_list(id,list_name,list_parent)
 		return self.put("list/" + id,{"list_name"=> list_name,"list_parent"=> list_parent}.to_json)
 	end
-	def display_list_users(listids,page,page_limit)
-		return self.get("list/display",{"listids"=> listids,"page"=> page,"page_limit"=> page_limit}.to_json)
-    end
 	def add_users_list(id,users)
 		return self.post("list/" + id + "/users",{"users"=> users}.to_json)
 	end
