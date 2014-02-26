@@ -60,7 +60,6 @@ class Mailin
 		else
 		return self.get("campaign/type/" + type + "/","")
 	end
-	end
 	def get_campaign(id)
 		return self.get("campaign/" + id,"")
 	end
