@@ -55,11 +55,7 @@ class Mailin
 		return self.post("sms",{"text"=> text,"tag"=> tag,"web_url"=> web_url,"from"=> from,"to"=> to}.to_json)
 	end
 	def get_campaigns(type)
-		if type == ""
-   		return self.get("campaign/","")
-   		else
-   		return self.get("campaign/type/" + type + "/","")
-   		end
+		return self.get("campaign",{"type"=> type}.to_json)
 	end
 	def get_campaign(id)
 		return self.get("campaign/" + id,"")
