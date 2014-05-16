@@ -56,4 +56,4 @@ tutorial.rb
 
 ### SMS call
 
- * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from,text,web_url,tag) - Sending a SMS
+ * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from,text,web_url,tag,type) - Sending a SMS

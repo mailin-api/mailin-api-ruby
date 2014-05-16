@@ -51,8 +51,8 @@ class Mailin
 	def get_account()
 		return self.get("account","")
 	end
-	def send_sms(to,from,text,web_url,tag)
-		return self.post("sms",{"text"=> text,"tag"=> tag,"web_url"=> web_url,"from"=> from,"to"=> to}.to_json)
+	def send_sms(to,from,text,web_url,tag,type)
+		return self.post("sms",{"text"=> text,"tag"=> tag,"web_url"=> web_url,"from"=> from,"to"=> to,"type"=> type}.to_json)
 	end
 	def get_campaigns(type)
 		if type == ""
