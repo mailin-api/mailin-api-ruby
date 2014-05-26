@@ -163,8 +163,8 @@ class Mailin
 	def import_users(url,listids,notify_url,name)
 		return self.post("user/import",{"url"=> url,"listids"=> listids,"notify_url"=> notify_url,"name"=> name}.to_json)
 	end
-	def export_users(export_attrib,filer,notify_url)
-		return self.post("user/export",{"export_attrib"=> export_attrib,"filer"=> filer,"notify_url"=> notify_url}.to_json)
+	def export_users(export_attrib,filter,notify_url)
+		return self.post("user/export",{"export_attrib"=> export_attrib,"filter"=> filter,"notify_url"=> notify_url}.to_json)
 	end
 	def create_update_user(email,attributes,blacklisted,listid,listid_unlink)
     	return self.post("user/createdituser",{"email"=> email,"attributes"=> attributes,"blacklisted"=> blacklisted,"listid"=> listid,"listid_unlink"=> listid_unlink}.to_json)
