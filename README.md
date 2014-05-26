@@ -22,6 +22,10 @@ m.get_campaigns()
 ### Campaign calls
 
  * [get_account](https://apidocs.sendinblue.com/account/)() - Get your account information
+ * [create_child_account](https://apidocs.sendinblue.com/account/#2)(email,password,company_org,first_name,last_name,credits) - Create a Reseller child account
+ * [update_child_account](https://apidocs.sendinblue.com/account/#3)(child_authkey,company_org,first_name,last_name,password) - Update a Reseller child account
+ * [delete_child_account](https://apidocs.sendinblue.com/account/#4)(child_authkey) - Delete a Reseller child account
+ * [add_remove_child_credits](https://apidocs.sendinblue.com/account/#6)(childauthkey,add_credits,remove_credits) - Add/Remove Reseller child credits
  * [get_campaigns](https://apidocs.sendinblue.com/campaign/#1)(type) - Get list of all campaigns or of specific type: "classic", "trigger", "sms"
  * [get_campaign](https://apidocs.sendinblue.com/campaign/#1)(id) - Get specific campaign object
  * [create_campaign](https://apidocs.sendinblue.com/campaign/#2)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list) - Create a campaign
@@ -29,6 +33,10 @@ m.get_campaigns()
  * [update_campaign](https://apidocs.sendinblue.com/campaign/#4)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list) - Update campaign information
  * [campaign_report_email](https://apidocs.sendinblue.com/campaign/#5)(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body) - Sending reports to specific emails
  * [campaign_recipients_export](https://apidocs.sendinblue.com/campaign/#6)(id,notify_url,type) - Export recipients of a campaign
+ * [send_bat_email](https://apidocs.sendinblue.com/campaign/#7)(campid,email_to) - Send a test Email (bat)
+ * [create_trigger_campaign](https://apidocs.sendinblue.com/campaign/#8)(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) - Create a trigger campaign
+ * [update_trigger_campaign](https://apidocs.sendinblue.com/campaign/#9)(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring) - Update trigger campaign information
+ * [campaign_share_link](https://apidocs.sendinblue.com/campaign/#10)(campaign_ids) - Get campaign share link
  * [get_folders](https://apidocs.sendinblue.com/folder/#1)() - Get list of all the folder details.
  * [get_folder](https://apidocs.sendinblue.com/folder/#2)(id) - Get all the folder details for folder with id <id>
  * [create_folder](https://apidocs.sendinblue.com/folder/#3)(name) - Create a folder
@@ -46,13 +54,15 @@ m.get_campaigns()
  * [create_attribute](https://apidocs.sendinblue.com/attribute/#3)(type,data) - Creating attributes
  * [delete_attribute](https://apidocs.sendinblue.com/attribute/#4)(id,data) - Deleting attributes
  * [get_user](https://apidocs.sendinblue.com/user/#2)(id) - Get information about a user/email
- * [create_user](https://apidocs.sendinblue.com/user/#1)(attributes,blacklisted,email,listid) - Add a new user/email
+ * [create_update_user](https://apidocs.sendinblue.com/user/#1)(email,attributes,blacklisted,listid,listid_unlink) - Create/Update a user information
  * [delete_user](https://apidocs.sendinblue.com/user/#4)(id) - Deleting user from db is not permitted but this action will unlink him from all lists
- * [update_user](https://apidocs.sendinblue.com/user/#3)(id,attributes,blacklisted,listid,listid_unlink) - Edit a user/email information
  * [import_users](https://apidocs.sendinblue.com/user/#5)(url,listids,notify_url,name) - Import users/emails
  * [export_users](https://apidocs.sendinblue.com/user/#6)(export_attrib,filter,notify_url) - Export users/emails
  * [get_processes](https://apidocs.sendinblue.com/process/#1)() - Get information about all background processes
  * [get_process](https://apidocs.sendinblue.com/process/#2)(id) - Get information about a specific process
+ * [create_sender](https://apidocs.sendinblue.com/sender-management/#2)(sender_name,sender_email,ip_domain) - Create a sender
+ * [delete_sender](https://apidocs.sendinblue.com/sender-management/#3)(id) - Delete a sender
+ * [update_sender](https://apidocs.sendinblue.com/sender-management/#4)(id,sender_name,sender_email,ip_domain) - Update a sender
  
 ### SMTP calls
 
@@ -66,7 +76,11 @@ m.get_campaigns()
  * [delete_bounces](https://apidocs.sendinblue.com/bounces/)(start_date,end_date,email) - Deleting bounces
  * [send_email](https://apidocs.sendinblue.com/tutorial-sending-transactional-email/)(to,subject,from,html,text,cc,bcc,replyto,attachment,headers) - Sending out a transactional email
  * [send_transactional_template](https://apidocs.sendinblue.com/template/)(id,to,cc,bcc,attr) - Send templates created on Sendinblue, through Sendinblue smtp.
+ * [create_template](https://apidocs.sendinblue.com/template/#2)(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) - Create a template 
+ * [update_template](https://apidocs.sendinblue.com/template/#3)(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status) - Update template information
 
 ### SMS call
 
  * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from,text,web_url,tag,type) - Sending a SMS
+ * [create_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#2)(camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Create a SMS campaign
+ * [update_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#3)(id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Update a SMS campaign
