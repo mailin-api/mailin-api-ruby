@@ -23,16 +23,16 @@ class Mailin
                 sign_string = method + "\n" + md5_content + "\n" + content_type + "\n" + c_date_time + "\n" + called_url
                 digest = OpenSSL::Digest::Digest.new('sha1')
                 signature = Base64.encode64(OpenSSL::HMAC.hexdigest(digest,@secret_key,sign_string.encode("UTF-8")))
-                puts signature
+
                 case method
                 when "GET"
-                        response = HTTParty.get(called_url,:headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
+                        response = HTTParty.get(called_url,:body=>input, :headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 when "POST"
                         response = HTTParty.post(called_url,:body=>input, :headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 when "PUT"
                         response = HTTParty.put(called_url,:body=>input, :headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 else
-                        response = HTTParty.delete(called_url,:headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
+                        response = HTTParty.delete(called_url,:body=>input, :headers => {"content-type"=>content_type,"X-mailin-date"=>c_date_time,"Authorization"=>@access_key+":"+signature})
                 end
                 return response.body
 	end
