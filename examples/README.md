@@ -12,6 +12,7 @@ tutorial.rb
  * [create_child_account](https://apidocs.sendinblue.com/account/#2)(email,password,company_org,first_name,last_name,credits) - Create a Reseller child account
  * [update_child_account](https://apidocs.sendinblue.com/account/#3)(child_authkey,company_org,first_name,last_name,password) - Update a Reseller child account
  * [delete_child_account](https://apidocs.sendinblue.com/account/#4)(child_authkey) - Delete a Reseller child account
+ * [get_child_account](https://apidocs.sendinblue.com/account/#5)(child_authkey) - Get Reseller child accounts
  * [add_remove_child_credits](https://apidocs.sendinblue.com/account/#6)(childauthkey,add_credits,remove_credits) - Add/Remove Reseller child credits
  * [get_campaigns](https://apidocs.sendinblue.com/campaign/#1)(type) - Get list of all campaigns or of specific type: "classic", "trigger", "sms"
  * [get_campaign](https://apidocs.sendinblue.com/campaign/#1)(id) - Get specific campaign object
@@ -47,6 +48,7 @@ tutorial.rb
  * [export_users](https://apidocs.sendinblue.com/user/#6)(export_attrib,filter,notify_url) - Export users/emails
  * [get_processes](https://apidocs.sendinblue.com/process/#1)() - Get information about all background processes
  * [get_process](https://apidocs.sendinblue.com/process/#2)(id) - Get information about a specific process
+ * [get_senders](https://apidocs.sendinblue.com/sender-management/#1)(option) - Get information about all/specific senders
  * [create_sender](https://apidocs.sendinblue.com/sender-management/#2)(sender_name,sender_email,ip_domain) - Create a sender
  * [delete_sender](https://apidocs.sendinblue.com/sender-management/#3)(id) - Delete a sender
  * [update_sender](https://apidocs.sendinblue.com/sender-management/#4)(id,sender_name,sender_email,ip_domain) - Update a sender
@@ -71,3 +73,4 @@ tutorial.rb
  * [send_sms](https://apidocs.sendinblue.com/sms/)(to,from,text,web_url,tag,type) - Sending a SMS
  * [create_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#2)(camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Create a SMS campaign
  * [update_sms_campaign](https://apidocs.sendinblue.com/mailin-sms/#3)(id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date) - Update a SMS campaign
+ * [send_bat_sms](https://apidocs.sendinblue.com/mailin-sms/#4)(campid,mobilephone) - Send a test SMS campaign
