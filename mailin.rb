@@ -60,6 +60,9 @@ class Mailin
 	def delete_child_account(child_authkey)
 		return self.delete("account/" + child_authkey,"")
 	end
+	def get_child_account(child_authkey)
+		return self.get("account/getchild",{"auth_key"=> child_authkey}.to_json)
+	end
 	def add_remove_child_credits(child_authkey,add_credits,remove_credits)
 		return self.post("account/addrmvcredit",{"auth_key"=> child_authkey,"add_credit"=> add_credits,"rmv_credit"=> remove_credits}.to_json)
 	end
@@ -71,6 +74,9 @@ class Mailin
 	end
 	def update_sms_campaign(id,camp_name,sender,content,bat_sent,listids,exclude_list,scheduled_date)
 		return self.put("sms/" + id,{"name"=> camp_name,"sender"=> sender,"content"=> content,"bat"=> bat_sent,"listid"=> listids,"exclude_list"=> exclude_list,"scheduled_date"=> scheduled_date}.to_json)
+	end
+	def send_bat_sms(campid,mobilephone)
+		return self.get("sms/" + campid,{"to"=> mobilephone}.to_json)
 	end
 	def get_campaigns(type)
 		if type == ""
@@ -218,7 +224,10 @@ class Mailin
 		return self.put("template/" + id,{"from_name"=> from_name,"template_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"status"=> status}.to_json)
 	end
 	def campaign_share_link(campaign_ids)
-    	return self.post("campaign/sharelink",{"camp_ids"=> campaign_ids})
+    	return self.post("campaign/sharelink",{"camp_ids"=> campaign_ids}.to_json)
+	end
+	def get_senders(option)
+		return self.get("advanced",{"option"=> option}.to_json)
 	end
 	def create_sender(sender_name,sender_email,ip_domain)
 		return self.post("advanced",{"name"=> sender_name,"email"=> sender_email,"ip_domain"=> ip_domain}.to_json)
