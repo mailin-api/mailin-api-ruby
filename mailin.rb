@@ -61,7 +61,7 @@ class Mailin
 		return self.delete("account/" + child_authkey,"")
 	end
 	def get_child_account(child_authkey)
-		return self.get("account/getchild",{"auth_key"=> child_authkey}.to_json)
+		return self.post("account/getchild",{"auth_key"=> child_authkey}.to_json)
 	end
 	def add_remove_child_credits(child_authkey,add_credits,remove_credits)
 		return self.post("account/addrmvcredit",{"auth_key"=> child_authkey,"add_credit"=> add_credits,"rmv_credit"=> remove_credits}.to_json)
