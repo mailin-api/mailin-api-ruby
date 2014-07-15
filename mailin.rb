@@ -226,6 +226,9 @@ class Mailin
 	def campaign_share_link(campaign_ids)
     	return self.post("campaign/sharelink",{"camp_ids"=> campaign_ids}.to_json)
 	end
+	def update_campaign_status(id,status)
+		return self.put("campaign/" + id + "/updatecampstatus",{"status"=> status}.to_json)
+	end
 	def get_senders(option)
 		return self.get("advanced",{"option"=> option}.to_json)
 	end
