@@ -78,11 +78,11 @@ class Mailin
 	def send_bat_sms(campid,mobilephone)
 		return self.get("sms/" + campid,{"to"=> mobilephone}.to_json)
 	end
-	def get_campaigns(type)
-		if type == ""
+	def get_campaigns(type,status,page,page_limit)
+		if type == "" and status == "" and page == "" and page_limit == ""
 		return self.get("campaign/","")
 		else
-		return self.get("campaign/type/" + type + "/","")
+		return self.get("campaign/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
 		end
 	end
 	def get_campaign(id)
