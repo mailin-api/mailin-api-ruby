@@ -172,8 +172,8 @@ class Mailin
 	def export_users(export_attrib,filter,notify_url)
 		return self.post("user/export",{"export_attrib"=> export_attrib,"filter"=> filter,"notify_url"=> notify_url}.to_json)
 	end
-	def create_update_user(email,attributes,blacklisted,listid,listid_unlink)
-    	return self.post("user/createdituser",{"email"=> email,"attributes"=> attributes,"blacklisted"=> blacklisted,"listid"=> listid,"listid_unlink"=> listid_unlink}.to_json)
+	def create_update_user(email,attributes,blacklisted,listid,listid_unlink,blacklisted_sms)
+    	return self.post("user/createdituser",{"email"=> email,"attributes"=> attributes,"blacklisted"=> blacklisted,"listid"=> listid,"listid_unlink"=> listid_unlink,"blacklisted_sms"=> blacklisted_sms}.to_json)
 	end
 	def get_attributes()
 		return self.get("attribute","")
