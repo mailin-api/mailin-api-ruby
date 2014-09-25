@@ -51,6 +51,9 @@ class Mailin
 	def get_account()
 		return self.get("account","")
 	end
+	def get_smtp_details()
+    	return self.get("account/smtpdetail","")
+    end
 	def create_child_account(email,password,company_org,first_name,last_name,credits)
 		return self.post("account",{"child_email"=> email,"password"=> password,"company_org"=> company_org,"first_name"=> first_name,"last_name"=> last_name,"credits"=> credits}.to_json)
 	end
