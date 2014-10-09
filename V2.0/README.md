@@ -1,23 +1,25 @@
-# SendinBlue Ruby API
+# SendinBlue Ruby Library
 
-You will need to install the following module
+This is the SendinBlue Ruby API wrapper. You will need to install the following module
 * json
 * httparty
 * openssl
 
 ## Quickstart
 
-1. You will need to first get the Access key and Secret key from [SendinBlue](https://www.sendinblue.com).
+1. You will need to first get the Access key from [SendinBlue](https://www.sendinblue.com).
 
 2. Assuming that you have cloned this git repo. You can use this small sample script to get started
 ```ruby
 require './mailin'
-m = Mailin.new("https://api.sendinblue.com/v1.0","<your access key>","<your secret key>")
+m = Mailin.new("https://api.sendinblue.com/v2.0","<your access key>")
 m.get_campaigns()
 ```
 3. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
 
 ## Available functions
+
+List of API calls that you can make, you can click to read more about it. Please do note that the order of parameters are important.
 
 ### Campaign calls
 
