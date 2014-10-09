@@ -246,4 +246,3 @@ class Mailin
 	end
 end
 
-

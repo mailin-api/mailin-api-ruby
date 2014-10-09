@@ -3,7 +3,6 @@
 This is the SendinBlue Ruby API wrapper. You will need to install the following module
 * json
 * httparty
-* openssl
 
 ## Quickstart
 
