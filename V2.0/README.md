@@ -1,6 +1,6 @@
 # SendinBlue Ruby Library
 
-This is the SendinBlue Ruby API wrapper. You will need to install the following module
+This is the official SendinBlue Ruby API wrapper. You will need to install the following module
 * json
 * httparty
 

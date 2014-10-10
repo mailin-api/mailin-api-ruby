@@ -1,8 +1,6 @@
 # Examples
 
-These are examples to get you started
-
-tutorial.rb
+tutorial.rb - Sending a transactional email
 
 ## Available functions
 
