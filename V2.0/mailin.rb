@@ -10,15 +10,16 @@ class Mailin
         end
         def do_request(resource,method,input)
                 called_url = @base_url + "/" + resource
+                content_type = "application/json"
                 case method
                 when "GET"
-                    response = HTTParty.get(called_url,:body=>input, :headers => {"api-key"=>@api_key})
+                    response = HTTParty.get(called_url,:body=>input, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
                 when "POST"
-                    response = HTTParty.post(called_url,:body=>input, :headers => {"api-key"=>@api_key})
+                    response = HTTParty.post(called_url,:body=>input, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
                 when "PUT"
-                    response = HTTParty.put(called_url,:body=>input, :headers => {"api-key"=>@api_key})
+                    response = HTTParty.put(called_url,:body=>input, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
                 else
-                    response = HTTParty.delete(called_url,:body=>input, :headers => {"api-key"=>@api_key})
+                    response = HTTParty.delete(called_url,:body=>input, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
                 end
                 return response.body
 	end
