@@ -50,8 +50,8 @@ class Mailin
 	def delete_child_account(child_authkey)
 		return self.delete("account/" + child_authkey,"")
 	end
-	def get_child_account(child_authkey)
-		return self.post("account/getchild",{"auth_key"=> child_authkey}.to_json)
+	def get_reseller_child(child_authkey)
+		return self.post("account/getchildv2",{"auth_key"=> child_authkey}.to_json)
 	end
 	def add_remove_child_credits(child_authkey,add_credits,remove_credits)
 		return self.post("account/addrmvcredit",{"auth_key"=> child_authkey,"add_credit"=> add_credits,"rmv_credit"=> remove_credits}.to_json)
@@ -68,15 +68,15 @@ class Mailin
 	def send_bat_sms(campid,mobilephone)
 		return self.get("sms/" + campid,{"to"=> mobilephone}.to_json)
 	end
-	def get_campaigns(type,status,page,page_limit)
+	def get_campaigns_v2(type,status,page,page_limit)
 		if type == "" and status == "" and page == "" and page_limit == ""
-		return self.get("campaign/","")
+		return self.get("campaign/detailsv2/","")
 		else
-		return self.get("campaign/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
+		return self.get("campaign/detailsv2/type/" + type + "/status/" + status + "/page/" + page + "/page_limit/" + page_limit + "/","")
 		end
 	end
-	def get_campaign(id)
-		return self.get("campaign/" + id,"")
+	def get_campaign_v2(id)
+		return self.get("campaign/" + id + "/detailsv2/","")
 	end
 	def create_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list)
 		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to" => reply_to,"exclude_list" => exclude_list}.to_json)
@@ -213,8 +213,8 @@ class Mailin
 	def update_template(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status)
 		return self.put("template/" + id,{"from_name"=> from_name,"template_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"status"=> status}.to_json)
 	end
-	def campaign_share_link(campaign_ids)
-    	return self.post("campaign/sharelink",{"camp_ids"=> campaign_ids}.to_json)
+	def share_campaign(campaign_ids)
+    	return self.post("campaign/sharelinkv2",{"camp_ids"=> campaign_ids}.to_json)
 	end
 	def update_campaign_status(id,status)
 		return self.put("campaign/" + id + "/updatecampstatus",{"status"=> status}.to_json)
