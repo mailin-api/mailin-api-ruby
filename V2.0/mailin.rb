@@ -96,14 +96,14 @@ class Mailin
 	def send_bat_email(campid,email_to)
     	return self.post("campaign/" + campid + "/test",{"emails"=> email_to}.to_json)
 	end
-	def get_processes()
-		return self.get("process","")
+	def get_processes(page,page_limit)
+		return self.get("process",{"page"=> page,"page_limit"=> page_limit}.to_json)
 	end
 	def get_process(id)
 		return self.get("process/" + id,"")
 	end
-	def get_lists()
-		return self.get("list","")
+	def get_lists(page,page_limit)
+		return self.get("list",{"page"=> page,"page_limit"=> page_limit}.to_json)
 	end
 	def get_list(id)
 		return self.get("list/" + id,"")
@@ -180,8 +180,8 @@ class Mailin
 	def get_report(limit,start_date,end_date,offset,date,days,email)
 		return self.post("report",{"limit"=> limit,"start_date"=> start_date,"end_date"=> end_date,"offset"=> offset,"date"=> date,"days"=> days,"email"=> email}.to_json)
 	end
-	def get_folders()
-		return self.get("folder","")
+	def get_folders(page,page_limit)
+		return self.get("folder",{"page"=> page,"page_limit"=> page_limit}.to_json)
 	end
 	def get_folder(id)
 		return self.get("folder/" + id,"")
