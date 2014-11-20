@@ -126,14 +126,14 @@ class Mailin
 	def send_email(to,subject,from,html,text,cc,bcc,replyto,attachment,headers)
 		return self.post("email",{"cc"=> cc,"text"=> text,"bcc"=> bcc,"replyto"=> replyto,"html"=> html,"to"=> to,"attachment"=> attachment,"from"=> from,"subject"=> subject,"headers" => headers}.to_json)
 	end
-	def get_webhooks()
-		return self.get("webhook","")
+	def get_webhooks(is_plat)
+		return self.get("webhook",{"is_plat"=> is_plat}.to_json)
 	end
 	def get_webhook(id)
 		return self.get("webhook/" + id,"")
 	end
-	def create_webhook(url,description,events)
-		return self.post("webhook",{"url"=> url,"description"=> description,"events"=> events}.to_json)
+	def create_webhook(url,description,events,is_plat)
+		return self.post("webhook",{"url"=> url,"description"=> description,"events"=> events,"is_plat"=> is_plat}.to_json)
 	end
 	def delete_webhook(id)
 		return self.delete("webhook/" + id,"")
