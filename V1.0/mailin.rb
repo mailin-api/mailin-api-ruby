@@ -91,14 +91,14 @@ class Mailin
 	def get_campaign(id)
 		return self.get("campaign/" + id,"")
 	end
-	def create_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list)
-		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to" => reply_to,"exclude_list" => exclude_list}.to_json)
+	def create_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list,attachmentUrl,inline_image)
+		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to" => reply_to,"exclude_list" => exclude_list,"attachment_url"=> attachmentUrl,"inline_image"=> inline_image}.to_json)
 	end
 	def delete_campaign(id)
 		return self.delete("campaign/" + id,"")
 	end
-	def update_campaign(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list)
-		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to" => reply_to,"exclude_list" => exclude_list}.to_json)
+	def update_campaign(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,exclude_list,attachmentUrl,inline_image)
+		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"name"=> name,"bat_sent"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to" => reply_to,"exclude_list" => exclude_list,"attachment_url"=> attachmentUrl,"inline_image"=> inline_image}.to_json)
 	end
 	def campaign_report_email(id,lang,email_subject,email_to,email_content_type,email_bcc,email_cc,email_body)
 		return self.post("campaign/" + id + "/report",{"lang"=> lang,"email_subject"=> email_subject,"email_to"=> email_to,"email_content_type"=> email_content_type,"email_bcc"=> email_bcc,"email_cc"=> email_cc,"email_body"=> email_body}.to_json)
@@ -211,20 +211,20 @@ class Mailin
 	def delete_bounces(start_date,end_date,email)
 		return self.post("bounces",{"start_date"=> start_date,"end_date"=> end_date,"email"=> email}.to_json)
 	end
-	def send_transactional_template(id,to,cc,bcc,attr)
-		return self.put("template/" + id,{"cc"=> cc,"to"=> to,"attr"=> attr,"bcc"=> bcc}.to_json)
+	def send_transactional_template(id,to,cc,bcc,attr,attachmentUrl,attachment)
+		return self.put("template/" + id,{"cc"=> cc,"to"=> to,"attr"=> attr,"bcc"=> bcc,"attachment_url"=> attachmentUrl,"attachment"=> attachment}.to_json)
 	end
-	def create_trigger_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring)
-		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"trigger_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"exclude_list"=> exclude_list,"recurring"=> recurring}.to_json)
+	def create_trigger_campaign(category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image)
+		return self.post("campaign",{"category"=> category,"from_name"=> from_name,"trigger_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"exclude_list"=> exclude_list,"recurring"=> recurring,"attachment_url"=> attachmentUrl,"inline_image"=> inline_image}.to_json)
 	end
-	def update_trigger_campaign(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring)
-		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"trigger_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"exclude_list"=> exclude_list,"recurring"=> recurring}.to_json)
+	def update_trigger_campaign(id,category,from_name,name,bat_sent,html_content,html_url,listid,scheduled_date,subject,from_email,reply_to,to_field,exclude_list,recurring,attachmentUrl,inline_image)
+		return self.put("campaign/" + id,{"category"=> category,"from_name"=> from_name,"trigger_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"listid"=> listid,"scheduled_date"=> scheduled_date,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"exclude_list"=> exclude_list,"recurring"=> recurring,"attachment_url"=> attachmentUrl,"inline_image"=> inline_image}.to_json)
 	end
-	def create_template(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status)
-		return self.post("template",{"from_name"=> from_name,"template_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"status"=> status}.to_json)
+	def create_template(from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach)
+		return self.post("template",{"from_name"=> from_name,"template_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"status"=> status,"attachment"=> attach}.to_json)
 	end
-	def update_template(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status)
-		return self.put("template/" + id,{"from_name"=> from_name,"template_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"status"=> status}.to_json)
+	def update_template(id,from_name,name,bat_sent,html_content,html_url,subject,from_email,reply_to,to_field,status,attach)
+		return self.put("template/" + id,{"from_name"=> from_name,"template_name"=> name,"bat"=> bat_sent,"html_content"=> html_content,"html_url"=> html_url,"subject"=> subject,"from_email"=> from_email,"reply_to"=> reply_to,"to_field"=> to_field,"status"=> status,"attachment"=> attach}.to_json)
 	end
 	def campaign_share_link(campaign_ids)
     	return self.post("campaign/sharelink",{"camp_ids"=> campaign_ids}.to_json)
