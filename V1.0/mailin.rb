@@ -169,8 +169,8 @@ class Mailin
 	def update_user(id,attributes,blacklisted,listid,listid_unlink)
 		return self.put("user/" + id,{"attributes"=> attributes,"blacklisted"=> blacklisted,"listid"=> listid,"listid_unlink"=> listid_unlink}.to_json)
 	end
-	def import_users(url,listids,notify_url,name)
-		return self.post("user/import",{"url"=> url,"listids"=> listids,"notify_url"=> notify_url,"name"=> name}.to_json)
+	def import_users(url,listids,notify_url,name,folder_id)
+		return self.post("user/import",{"url"=> url,"listids"=> listids,"notify_url"=> notify_url,"name"=> name,"list_parent"=> folder_id}.to_json)
 	end
 	def export_users(export_attrib,filter,notify_url)
 		return self.post("user/export",{"export_attrib"=> export_attrib,"filter"=> filter,"notify_url"=> notify_url}.to_json)
