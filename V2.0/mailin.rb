@@ -41,11 +41,11 @@ class Mailin
 	def get_smtp_details()
     	return self.get("account/smtpdetail","")
     end
-	def create_child_account(email,password,company_org,first_name,last_name,credits)
-		return self.post("account",{"child_email"=> email,"password"=> password,"company_org"=> company_org,"first_name"=> first_name,"last_name"=> last_name,"credits"=> credits}.to_json)
+	def create_child_account(email,password,company_org,first_name,last_name,credits,associate_ip)
+		return self.post("account",{"child_email"=> email,"password"=> password,"company_org"=> company_org,"first_name"=> first_name,"last_name"=> last_name,"credits"=> credits,"associate_ip"=> associate_ip}.to_json)
 	end
-	def update_child_account(child_authkey,company_org,first_name,last_name,password)
-		return self.put("account",{"auth_key"=> child_authkey,"company_org"=> company_org,"first_name"=> first_name,"last_name"=> last_name,"password"=> password}.to_json)
+	def update_child_account(child_authkey,company_org,first_name,last_name,password,associate_ip,disassociate_ip)
+		return self.put("account",{"auth_key"=> child_authkey,"company_org"=> company_org,"first_name"=> first_name,"last_name"=> last_name,"password"=> password,"associate_ip"=> associate_ip,"disassociate_ip"=> disassociate_ip}.to_json)
 	end
 	def delete_child_account(child_authkey)
 		return self.delete("account/" + child_authkey,"")
