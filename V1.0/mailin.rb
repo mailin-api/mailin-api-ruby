@@ -104,7 +104,7 @@ class Mailin
 		return self.post("campaign/" + id + "/report",{"lang"=> lang,"email_subject"=> email_subject,"email_to"=> email_to,"email_content_type"=> email_content_type,"email_bcc"=> email_bcc,"email_cc"=> email_cc,"email_body"=> email_body}.to_json)
 	end
 	def campaign_recipients_export(id,notify_url,type)
-		return self.post("campaign/" + id + "/report",{"notify_url"=> notify_url,"type"=> type}.to_json)
+		return self.post("campaign/" + id + "/recipients",{"notify_url"=> notify_url,"type"=> type}.to_json)
 	end
 	def send_bat_email(campid,email_to)
     	return self.post("campaign/" + campid + "/test",{"emails"=> email_to}.to_json)
