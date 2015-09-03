@@ -10,9 +10,16 @@ This is the official SendinBlue Ruby API wrapper. You will need to install the f
 
 2. Assuming that you have cloned this git repo. You can use this small sample script to get started
 ```ruby
-require './mailin'
-m = Mailin.new("https://api.sendinblue.com/v2.0","<your access key>")
-m.get_campaigns_v2()
+require './mailin.rb'
+m = Mailin.new("https://api.sendinblue.com/v2.0","your access key")
+data = { "type"=>"classic",
+	"status"=>"queued",
+	"page"=>1,
+	"page_limit"=>10
+}
+
+result = m.get_campaigns_v2(data)
+puts result
 ```
 3. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
 
