@@ -1,4 +1,4 @@
-require './mailin'
+require './mailin.rb'
 
 m = Mailin.new("https://api.sendinblue.com/v2.0","<your access key>")
 
