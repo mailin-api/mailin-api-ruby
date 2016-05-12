@@ -8,10 +8,12 @@ This is the official SendinBlue Ruby API wrapper. You will need to install the f
 
 1. You will need to first get the Access key from [SendinBlue](https://www.sendinblue.com).
 
-2. Assuming that you have cloned this git repo. You can use this small sample script to get started
+2. Our library supports a timeout value, default is 30 Secs, which you can pass as 3rd parameter in Mailin class Object.
+
+3. Assuming that you have cloned this git repo. You can use this small sample script to get started
 ```ruby
 require './mailin.rb'
-m = Mailin.new("https://api.sendinblue.com/v2.0","your access key")
+m = Mailin.new("https://api.sendinblue.com/v2.0","your access key",5)	#Optional parameter: Timeout in Secs
 data = { "type"=>"classic",
 	"status"=>"queued",
 	"page"=>1,
@@ -21,7 +23,7 @@ data = { "type"=>"classic",
 result = m.get_campaigns_v2(data)
 puts result
 ```
-3. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
+4. To explore more, you should visit the [SendinBlue API documentation](https://apidocs.sendinblue.com).
 
 ## Available functions
 
