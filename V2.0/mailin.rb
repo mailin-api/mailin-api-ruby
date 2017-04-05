@@ -26,6 +26,8 @@ class Mailin
             else
                 response = HTTParty.delete(called_url,:body=>input, :default_timeout=> @timeout, :headers => {"api-key"=>@api_key,"content-type"=>content_type})
             end
+            rescue
+                raise Exception.new("Request failed")
             return JSON.parse(response.body)
 	end
 	def get(resource,input)
